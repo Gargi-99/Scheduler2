@@ -1,10 +1,11 @@
 const express = require("express");
 const app = express();
 const cors = require("cors");
+const path = require("path");
+
 require("./connection/conn");
 const auth = require("./routes/auth");
 const list = require("./routes/list");
-const path = require("path");
 
 app.use(express.json());
 app.use(cors());
@@ -22,7 +23,10 @@ app.get('*', (req, res) => {
 });
 
 // Start the server
-app.listen(3001, () => {
-  console.log("Server started on port 3001");
+const PORT = 3001; // Hardcoded port
+app.listen(PORT, () => {
+  console.log(`Server started on port ${PORT}`);
 });
+
+module.exports = app;
 
